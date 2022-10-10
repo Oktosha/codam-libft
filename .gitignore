@@ -2,3 +2,5 @@
 *.o
 *.a
 a.out
+tests/test
+tests/test-bonus
