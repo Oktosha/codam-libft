@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRCS = ft_isalpha.c
 
-BONUS_SRCS = ft_lstnew.c
+BONUS_SRCS = ft_lstnew_bonus.c
 
 OBJS = ${SRCS:.c=.o}
 
