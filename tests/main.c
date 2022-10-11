@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/11 14:20:38 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/11 14:37:41 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,22 @@ TEST test_ft_isalnum(void)
 	PASS();
 }
 
+TEST test_ft_isascii(void)
+{
+	ASSERT(ft_isascii(5));
+	ASSERT(ft_isascii(0));
+	ASSERT(ft_isascii(127));
+	ASSERT_FALSE(ft_isascii(-3));
+	ASSERT_FALSE(ft_isascii(128));
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
 	RUN_TEST(test_ft_isdigit);
 	RUN_TEST(test_ft_isalnum);
+	RUN_TEST(test_ft_isascii);
 }
 
 GREATEST_MAIN_DEFS();
