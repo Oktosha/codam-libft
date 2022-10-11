@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   libft.h                                            :+:    :+:            */
+/*   ft_isalnum.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/03 17:48:45 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/11 14:18:48 by dkolodze      ########   odam.nl         */
+/*   Created: 2022/10/11 14:16:50 by dkolodze      #+#    #+#                 */
+/*   Updated: 2022/10/11 14:18:30 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-typedef struct s_list
+int	ft_isalnum(int c)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
-int		ft_isalpha(int c);
-int		ft_isdigit(int c);
-int		ft_isalnum(int c);
-t_list	*ft_lstnew(void *content);
-
-#endif
+	return (ft_isalpha(c) || ft_isdigit(c));
+}

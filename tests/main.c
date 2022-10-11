@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/11 14:03:10 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/11 14:20:38 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,18 @@ TEST test_ft_isdigit(void)
 	PASS();
 }
 
+TEST test_ft_isalnum(void)
+{
+	ASSERT(ft_isalnum('A'));
+	ASSERT_FALSE(ft_isalnum('!'));
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
 	RUN_TEST(test_ft_isdigit);
+	RUN_TEST(test_ft_isalnum);
 }
 
 GREATEST_MAIN_DEFS();
