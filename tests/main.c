@@ -6,10 +6,11 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/11 14:37:41 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/11 15:01:36 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ctype.h>
 #include <libft.h>
 #include "greatest.h"
 
@@ -54,12 +55,23 @@ TEST test_ft_isascii(void)
 	PASS();
 }
 
+TEST test_ft_isprint(void)
+{
+	ASSERT_EQ(isprint(' '), ft_isprint(' '));
+	ASSERT_EQ(isprint('~'), ft_isprint('~'));
+	ASSERT_EQ(isprint(127), ft_isprint(127));
+	ASSERT_EQ(isprint('A'), ft_isprint('A'));
+	ASSERT_EQ(isprint(3), ft_isprint(3));
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
 	RUN_TEST(test_ft_isdigit);
 	RUN_TEST(test_ft_isalnum);
 	RUN_TEST(test_ft_isascii);
+	RUN_TEST(test_ft_isprint);
 }
 
 GREATEST_MAIN_DEFS();
