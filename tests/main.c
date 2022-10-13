@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/13 18:25:08 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/13 19:05:24 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,15 @@ TEST test_ft_bzero(void)
 	PASS();
 }
 
+TEST test_ft_memcpy(void)
+{
+	char dst[] = "efgh";
+	char src[] = "abcd";
+	ft_memcpy(dst, src, 2);
+	ASSERT_EQ(strcmp(ft_memcpy(dst, src, 2), "abgh"), 0);
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
@@ -100,6 +109,7 @@ SUITE(part1)
 	RUN_TEST(test_ft_strlen);
 	RUN_TEST(test_ft_memset);
 	RUN_TEST(test_ft_bzero);
+	RUN_TEST(test_ft_memcpy);
 }
 
 GREATEST_MAIN_DEFS();
