@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 17:48:45 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/13 19:02:16 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/13 20:03:19 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ size_t	ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_memmove(void *dst, const void *src, size_t len);
 t_list	*ft_lstnew(void *content);
 
 #endif

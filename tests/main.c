@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/13 19:05:24 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/13 20:09:48 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,22 @@ TEST test_ft_memcpy(void)
 {
 	char dst[] = "efgh";
 	char src[] = "abcd";
-	ft_memcpy(dst, src, 2);
+	ASSERT_EQ(dst, ft_memcpy(dst, src, 2));
 	ASSERT_EQ(strcmp(ft_memcpy(dst, src, 2), "abgh"), 0);
+	PASS();
+}
+
+TEST test_ft_memmove(void)
+{
+	char s1[] = "abcdef";
+	ft_memmove(s1, s1 + 1, 3);
+	ASSERT_STR_EQ("bcddef", s1);
+	char s2[] = "abcdef";
+	ft_memmove(s2 + 1, s2, 3);
+	ASSERT_STR_EQ("aabcef", s2);
+	char s3[] = "abcdef";
+	ft_memmove(s3, s3, 3);
+	ASSERT_STR_EQ("abcdef", s3);
 	PASS();
 }
 
@@ -110,6 +124,7 @@ SUITE(part1)
 	RUN_TEST(test_ft_memset);
 	RUN_TEST(test_ft_bzero);
 	RUN_TEST(test_ft_memcpy);
+	RUN_TEST(test_ft_memmove);
 }
 
 GREATEST_MAIN_DEFS();
