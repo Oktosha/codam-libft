@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 16:35:16 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/13 18:14:36 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/13 19:48:19 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	char			*b_as_string;
+	unsigned char	*b_as_string;
 	unsigned char	c_as_uchar;
 	size_t			pos;
 
