@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   libft.h                                            :+:    :+:            */
+/*   ft_memset.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/03 17:48:45 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/13 17:57:55 by dkolodze      ########   odam.nl         */
+/*   Created: 2022/10/13 16:35:16 by dkolodze      #+#    #+#                 */
+/*   Updated: 2022/10/13 18:14:36 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include <stddef.h>
 
-# include <stddef.h>
-
-typedef struct s_list
+void	*ft_memset(void *b, int c, size_t len)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	char			*b_as_string;
+	unsigned char	c_as_uchar;
+	size_t			pos;
 
-int		ft_isalpha(int c);
-int		ft_isdigit(int c);
-int		ft_isalnum(int c);
-int		ft_isascii(int c);
-int		ft_isprint(int c);
-size_t	ft_strlen(const char *s);
-void	*ft_memset(void *b, int c, size_t len);
-t_list	*ft_lstnew(void *content);
-
-#endif
+	b_as_string = b;
+	c_as_uchar = c;
+	pos = 0;
+	while (pos < len)
+	{
+		b_as_string[pos] = c_as_uchar;
+		++pos;
+	}
+	return (b);
+}

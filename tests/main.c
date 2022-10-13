@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/13 16:32:33 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/13 18:15:15 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,14 @@ TEST test_ft_strlen(void)
 	PASS();
 }
 
+TEST test_ft_memset(void)
+{
+	char s[] = "abcd";
+	ASSERT_EQ(s, ft_memset(s, 'o', 3));
+	ASSERT_EQ(strcmp(s, "oood"), 0);
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
@@ -80,6 +88,7 @@ SUITE(part1)
 	RUN_TEST(test_ft_isascii);
 	RUN_TEST(test_ft_isprint);
 	RUN_TEST(test_ft_strlen);
+	RUN_TEST(test_ft_memset);
 }
 
 GREATEST_MAIN_DEFS();
