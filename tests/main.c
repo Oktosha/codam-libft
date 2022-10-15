@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/15 20:37:15 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/15 21:07:55 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,6 +218,30 @@ TEST test_ft_strrchr(void)
 	PASS();
 }
 
+int sign(int x)
+{
+	if (x < 0)
+	{
+		return -1;
+	}
+	if (x > 0)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+TEST test_ft_strncmp(void)
+{
+	ASSERT_EQ(sign(ft_strncmp("abc", "abd", 100)), sign(strncmp("abc", "abd", 100)));
+	ASSERT_EQ(sign(ft_strncmp("abc", "abd", 2)), sign(strncmp("abc", "abd", 2)));
+	ASSERT_EQ(sign(ft_strncmp("\20012", "", 3)), sign(strncmp("\20012", "", 3)));
+	ASSERT_EQ(sign(ft_strncmp("\0a", "\0b", 3)), sign(strncmp("\0a", "\0b", 3)));
+	ASSERT_EQ(sign(ft_strncmp("abc", "def", 0)), sign(strncmp("abc", "def", 0)));
+	ASSERT_EQ(sign(ft_strncmp("abc", "a", 100)), sign(strncmp("abc", "a", 100)));
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
@@ -236,6 +260,7 @@ SUITE(part1)
 	RUN_TEST(test_ft_tolower);
 	RUN_TEST(test_ft_strchr);
 	RUN_TEST(test_ft_strrchr);
+	RUN_TEST(test_ft_strncmp);
 }
 
 GREATEST_MAIN_DEFS();
