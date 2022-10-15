@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 17:48:45 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/15 20:15:37 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/15 20:22:05 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+char	*ft_strchr(const char *s, int c);
 t_list	*ft_lstnew(void *content);
 
 #endif

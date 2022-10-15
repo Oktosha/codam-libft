@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/15 20:15:10 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/15 20:26:29 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,16 @@ TEST test_ft_tolower(void)
 	PASS();
 }
 
+TEST test_ft_strchr(void)
+{
+	const char *s = "abcabc";
+	ASSERT_EQ(strchr(s, 'a'), ft_strchr(s, 'a'));
+	ASSERT_EQ(strchr(s, 'b'), ft_strchr(s, 'b'));
+	ASSERT_EQ(strchr(s, 'd'), ft_strchr(s, 'd'));
+	ASSERT_EQ(strchr(s, '\0'), ft_strchr(s, '\0'));
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
@@ -214,6 +224,7 @@ SUITE(part1)
 	RUN_TEST(test_ft_strlcat);
 	RUN_TEST(test_ft_toupper);
 	RUN_TEST(test_ft_tolower);
+	RUN_TEST(test_ft_strchr);
 }
 
 GREATEST_MAIN_DEFS();
