@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/15 17:59:18 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/15 18:08:47 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,13 @@ TEST test_ft_strlcpy(void)
 	n1 = strlcpy(dst_zero1, src2, 0);
 	ASSERT_EQ(n1, n0);
 	ASSERT_EQ(0, memcmp(dst_zero0, dst_zero1, 8));
+	char src_eq[] = "ABC";
+	char dst_eq0[] = "abcdefg";
+	char dst_eq1[] = "abcdefg";
+	n0 = ft_strlcpy(dst_eq0, src_eq, 4);
+	n1 = strlcpy(dst_eq1, src_eq, 4);
+	ASSERT_EQ(n1, n0);
+	ASSERT_EQ(0, memcmp(dst_eq0, dst_eq1, 8));
 	PASS();
 }
 
