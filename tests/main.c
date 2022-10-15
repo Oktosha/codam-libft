@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/15 17:18:04 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/15 17:59:18 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,15 +120,22 @@ TEST test_ft_strlcpy(void)
 	char src0[] = "ABC";
 	int n0 = ft_strlcpy(dst0, src0, 8);
 	int n1 = strlcpy(dst1, src0, 8);
-	ASSERT_EQ(0, memcmp(dst0, "ABC\0efg", 8));
+	ASSERT_EQ(0, memcmp(dst0, dst1, 8));
 	ASSERT_EQ(n1, n0);
-	char dst_short0[] = "abc";
-	char dst_short1[] = "abc";
+	char dst_short0[] = "abcdefghj";
+	char dst_short1[] = "abcdefghj";
 	char src1[] = "ABCDEF";
 	n0 = ft_strlcpy(dst_short0, src1, 4);
 	n1 = strlcpy(dst_short1, src1, 4);
 	ASSERT_EQ(n1, n0);
-	ASSERT_EQ(0, memcmp(dst_short0, dst_short1, 4));
+	ASSERT_EQ(0, memcmp(dst_short0, dst_short1, 10));
+	char dst_zero0[] = "abcdefg";
+	char dst_zero1[] = "abcdefg";
+	char src2[]  = "ABC";
+	n0 = ft_strlcpy(dst_zero0, src2, 0);
+	n1 = strlcpy(dst_zero1, src2, 0);
+	ASSERT_EQ(n1, n0);
+	ASSERT_EQ(0, memcmp(dst_zero0, dst_zero1, 8));
 	PASS();
 }
 
