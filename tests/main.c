@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/13 20:09:48 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/15 17:18:04 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,25 @@ TEST test_ft_memmove(void)
 	PASS();
 }
 
+TEST test_ft_strlcpy(void)
+{
+	char dst0[] = "abcdefg";
+	char dst1[] = "abcdefg";
+	char src0[] = "ABC";
+	int n0 = ft_strlcpy(dst0, src0, 8);
+	int n1 = strlcpy(dst1, src0, 8);
+	ASSERT_EQ(0, memcmp(dst0, "ABC\0efg", 8));
+	ASSERT_EQ(n1, n0);
+	char dst_short0[] = "abc";
+	char dst_short1[] = "abc";
+	char src1[] = "ABCDEF";
+	n0 = ft_strlcpy(dst_short0, src1, 4);
+	n1 = strlcpy(dst_short1, src1, 4);
+	ASSERT_EQ(n1, n0);
+	ASSERT_EQ(0, memcmp(dst_short0, dst_short1, 4));
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
@@ -125,6 +144,7 @@ SUITE(part1)
 	RUN_TEST(test_ft_bzero);
 	RUN_TEST(test_ft_memcpy);
 	RUN_TEST(test_ft_memmove);
+	RUN_TEST(test_ft_strlcpy);
 }
 
 GREATEST_MAIN_DEFS();
