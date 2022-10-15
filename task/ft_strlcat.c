@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/15 17:43:28 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/15 19:41:04 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/15 20:43:49 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 	srclen = ft_strlen(src);
 	dstlen = 0;
-	while (dst[dstlen] != 0 && dstlen < dstsize)
+	while (dstlen < dstsize && dst[dstlen] != '\0')
 	{
 		++dstlen;
 	}
