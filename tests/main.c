@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/15 18:08:47 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/15 19:39:47 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,34 @@ TEST test_ft_strlcpy(void)
 	PASS();
 }
 
+TEST test_ft_strlcat(void)
+{
+	char dst_ft[] = "abc\0defgh";
+	char dst_gt[] = "abc\0defgh";
+	char src[] = "ABC";
+	size_t n_gt = strlcat(dst_gt, src, 10);
+	size_t n_ft = ft_strlcat(dst_ft, src, 10);
+	ASSERT_EQ(n_gt, n_ft);
+	ASSERT_EQ(0, memcmp(dst_ft, dst_gt, 10));
+
+	char dst_ft1[] = "abc\0defgh";
+	char dst_gt1[] = "abc\0defgh";
+	char src1[] = "ABC";
+	size_t n_gt1 = strlcat(dst_gt1, src1, 5);
+	size_t n_ft1 = ft_strlcat(dst_ft1, src1, 5);
+	ASSERT_EQ(n_gt1, n_ft1);
+	ASSERT_EQ(0, memcmp(dst_ft1, dst_gt1, 10));
+
+	char dst_ft2[] = "abc\0defgh";
+	char dst_gt2[] = "abc\0defgh";
+	char src2[] = "ABC";
+	size_t n_gt2 = strlcat(dst_gt2, src2, 2);
+	size_t n_ft2 = ft_strlcat(dst_ft2, src2, 2);
+	ASSERT_EQ(n_gt2, n_ft2);
+	ASSERT_EQ(0, memcmp(dst_ft2, dst_gt2, 10));
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
@@ -159,6 +187,7 @@ SUITE(part1)
 	RUN_TEST(test_ft_memcpy);
 	RUN_TEST(test_ft_memmove);
 	RUN_TEST(test_ft_strlcpy);
+	RUN_TEST(test_ft_strlcat);
 }
 
 GREATEST_MAIN_DEFS();
