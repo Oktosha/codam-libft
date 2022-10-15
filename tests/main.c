@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/15 21:07:55 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/15 21:18:31 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,7 @@ TEST test_ft_strchr(void)
 {
 	const char *s = "abcabc";
 	ASSERT_EQ(strchr(s, 'a'), ft_strchr(s, 'a'));
+	ASSERT_EQ(strchr(s, 609), ft_strchr(s, 609));
 	ASSERT_EQ(strchr(s, 'b'), ft_strchr(s, 'b'));
 	ASSERT_EQ(strchr(s, 'd'), ft_strchr(s, 'd'));
 	ASSERT_EQ(strchr(s, '\0'), ft_strchr(s, '\0'));
@@ -212,6 +213,7 @@ TEST test_ft_strrchr(void)
 {
 	const char *s = "abcbc";
 	ASSERT_EQ(strrchr(s, 'a'), ft_strrchr(s, 'a'));
+	ASSERT_EQ(strrchr(s, 609), ft_strrchr(s, 609));
 	ASSERT_EQ(strrchr(s, 'b'), ft_strrchr(s, 'b'));
 	ASSERT_EQ(strrchr(s, 'd'), ft_strrchr(s, 'd'));
 	ASSERT_EQ(strrchr(s, '\0'), ft_strrchr(s, '\0'));
