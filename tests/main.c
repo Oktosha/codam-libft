@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/15 21:18:31 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/15 21:36:56 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,6 +244,16 @@ TEST test_ft_strncmp(void)
 	PASS();
 }
 
+TEST test_ft_memchr(void)
+{
+	char s[] = "abcd\0efg";
+	ASSERT_EQ(ft_memchr(s, '\0', 9), memchr(s, '\0', 9));
+	ASSERT_EQ(ft_memchr(s, 'e', 9), memchr(s, 'e', 9));
+	ASSERT_EQ(ft_memchr(s, 'f', 3), memchr(s, 'f', 3));
+	ASSERT_EQ(ft_memchr(s, 'a', 0), memchr(s, 'a', 0));
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
@@ -263,6 +273,7 @@ SUITE(part1)
 	RUN_TEST(test_ft_strchr);
 	RUN_TEST(test_ft_strrchr);
 	RUN_TEST(test_ft_strncmp);
+	RUN_TEST(test_ft_memchr);
 }
 
 GREATEST_MAIN_DEFS();
