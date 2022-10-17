@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/15 21:36:56 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/17 17:14:26 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,6 +254,25 @@ TEST test_ft_memchr(void)
 	PASS();
 }
 
+// https://stackoverflow.com/questions/50433145/bsd-memcmp3-difference-between-manual-and-implementation
+
+TEST test_ft_memcmp(void)
+{
+	char s1[] = "dbc";
+	char s2[] = "abc";
+	char s3[] = "adc";
+	char s_empty[] = "";
+	char s_200[] = "\200";
+	ASSERT_EQ(memcmp("abc", "abc", 3), ft_memcmp("abc", "abc", 3));
+	ASSERT_EQ(memcmp("dbc", "abc", 0), ft_memcmp("dbc", "abc", 0));
+	ASSERT_EQ(memcmp(s1, s2, 3), ft_memcmp(s1, s2, 3));
+	ASSERT_EQ(memcmp(s2, s1, 3), ft_memcmp(s2, s1, 3));
+	ASSERT_EQ(memcmp(s2, s3, 2), ft_memcmp(s2, s3, 2));
+	ASSERT_EQ(memcmp(s_empty, s_200, 1), ft_memcmp(s_empty, s_200, 1));
+	ASSERT_EQ(memcmp(s_200, s_empty, 1), ft_memcmp(s_200, s_empty, 1));
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
@@ -274,6 +293,7 @@ SUITE(part1)
 	RUN_TEST(test_ft_strrchr);
 	RUN_TEST(test_ft_strncmp);
 	RUN_TEST(test_ft_memchr);
+	RUN_TEST(test_ft_memcmp);
 }
 
 GREATEST_MAIN_DEFS();
