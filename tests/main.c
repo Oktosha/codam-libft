@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/19 00:01:01 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/19 00:24:48 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,6 +307,24 @@ TEST test_ft_atoi(void)
 	PASS();
 }
 
+TEST test_ft_calloc(void)
+{
+	char *s = ft_calloc(4, 1);
+	s[0] = 'a';
+	s[0] = 'b';
+	s[0] = 'c';
+	s[0] = '\0';
+	free(s);
+
+	int *a = ft_calloc(3, sizeof(int));
+	ASSERT_EQ(a[0], 0);
+	ASSERT_EQ(a[1], 0);
+	ASSERT_EQ(a[2], 0);
+	free(a);
+
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
@@ -330,6 +348,7 @@ SUITE(part1)
 	RUN_TEST(test_ft_memcmp);
 	RUN_TEST(test_ft_strnstr);
 	RUN_TEST(test_ft_atoi);
+	RUN_TEST(test_ft_calloc);
 }
 
 GREATEST_MAIN_DEFS();
