@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/19 00:38:40 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/19 01:22:07 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -361,11 +361,32 @@ SUITE(part1)
 	RUN_TEST(test_ft_strdup);
 }
 
+TEST test_ft_substr(void)
+{
+	const char *s = "abcdef";
+	char *ss = ft_substr(s, 1, 3);
+	ASSERT_STR_EQ("bcd", ss);
+	free(ss);
+	char *s_end = ft_substr(s, 1, 15);
+	ASSERT_STR_EQ("bcdef", s_end);
+	free(s_end);
+	char *s_zero = ft_substr(s, 1, 0);
+	ASSERT_STR_EQ("", s_zero);
+	free(s_zero);
+	PASS();
+}
+
+SUITE(part2)
+{
+	RUN_TEST(test_ft_substr);
+}
+
 GREATEST_MAIN_DEFS();
 
 int main(int argc, char **argv)
 {
     GREATEST_MAIN_BEGIN();
 	RUN_SUITE(part1);
+	RUN_SUITE(part2);
     GREATEST_MAIN_END();
 }
