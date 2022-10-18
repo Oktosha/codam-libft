@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 17:48:45 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/19 00:19:08 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/19 00:35:22 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
+char	*ft_strdup(const char *s1);
 t_list	*ft_lstnew(void *content);
 
 #endif
