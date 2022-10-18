@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/18 17:30:43 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/19 00:01:01 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,6 +291,22 @@ TEST test_ft_strnstr(void)
 	PASS();
 }
 
+TEST test_ft_atoi(void)
+{
+	ASSERT_EQ(atoi("2147483647"), ft_atoi("2147483647"));
+	ASSERT_EQ(atoi("-2147483648"), ft_atoi("-2147483648"));
+	ASSERT_EQ(atoi("0"), ft_atoi("0"));
+	ASSERT_EQ(atoi("42"), ft_atoi("42"));
+	ASSERT_EQ(atoi("1"), ft_atoi("1"));
+	ASSERT_EQ(atoi("-1"), ft_atoi("-1"));
+	ASSERT_EQ(atoi("-32"), ft_atoi("-32"));
+	ASSERT_EQ(atoi("   -32"), ft_atoi("   -32"));
+	ASSERT_EQ(atoi("- 32"), ft_atoi("- 32"));
+	ASSERT_EQ(atoi("+32"), ft_atoi("+32"));
+	ASSERT_EQ(atoi("-32A"), ft_atoi("-32A"));
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
@@ -313,6 +329,7 @@ SUITE(part1)
 	RUN_TEST(test_ft_memchr);
 	RUN_TEST(test_ft_memcmp);
 	RUN_TEST(test_ft_strnstr);
+	RUN_TEST(test_ft_atoi);
 }
 
 GREATEST_MAIN_DEFS();
