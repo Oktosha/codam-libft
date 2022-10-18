@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/17 17:14:26 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/18 17:30:43 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,6 +273,24 @@ TEST test_ft_memcmp(void)
 	PASS();
 }
 
+TEST test_ft_strnstr(void)
+{
+	char *haystack = "abcdefga";
+	char *needle_empty = "";
+	char *needle_1 = "a";
+	char *needle_2 = "bc";
+	char *needle_3 = "efga";
+	ASSERT_EQ(strnstr(haystack, needle_empty, 8), ft_strnstr(haystack, needle_empty, 8));
+	ASSERT_EQ(strnstr(haystack, needle_empty, 0), ft_strnstr(haystack, needle_empty, 0));
+	ASSERT_EQ(strnstr(haystack, needle_1, 0), ft_strnstr(haystack, needle_1, 0));
+	ASSERT_EQ(strnstr(haystack, needle_1, 9), ft_strnstr(haystack, needle_1, 9));
+	ASSERT_EQ(strnstr(haystack, needle_3, 8), ft_strnstr(haystack, needle_3, 8));
+	ASSERT_EQ(strnstr(haystack, needle_3, 100), ft_strnstr(haystack, needle_3, 100));
+	ASSERT_EQ(strnstr(haystack, needle_2, 100), ft_strnstr(haystack, needle_2, 100));
+	ASSERT_EQ(strnstr(haystack, needle_3, 4), ft_strnstr(haystack, needle_3, 4));
+	PASS();
+}
+
 SUITE(part1)
 {
 	RUN_TEST(test_ft_isalpha);
@@ -294,6 +312,7 @@ SUITE(part1)
 	RUN_TEST(test_ft_strncmp);
 	RUN_TEST(test_ft_memchr);
 	RUN_TEST(test_ft_memcmp);
+	RUN_TEST(test_ft_strnstr);
 }
 
 GREATEST_MAIN_DEFS();
