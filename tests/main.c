@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/19 01:22:07 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/19 01:35:10 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -376,9 +376,24 @@ TEST test_ft_substr(void)
 	PASS();
 }
 
+TEST test_ft_strjoin(void)
+{
+	char *s = ft_strjoin("abc", "def");
+	ASSERT_STR_EQ("abcdef", s);
+	free(s);
+	s = ft_strjoin("ab", "");
+	ASSERT_STR_EQ("ab", s);
+	free(s);
+	s = ft_strjoin("", "");
+	ASSERT_STR_EQ("", s);
+	free(s);
+	PASS();
+}
+
 SUITE(part2)
 {
 	RUN_TEST(test_ft_substr);
+	RUN_TEST(test_ft_strjoin);
 }
 
 GREATEST_MAIN_DEFS();
