@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/19 01:35:10 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/19 01:58:48 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -390,10 +390,34 @@ TEST test_ft_strjoin(void)
 	PASS();
 }
 
+TEST test_ft_strtrim(void)
+{
+	char* s = ft_strtrim("", "abcd");
+	ASSERT_STR_EQ("", s);
+	free(s);
+	s = ft_strtrim("", "");
+	ASSERT_STR_EQ("", s);
+	free(s);
+	s = ft_strtrim("abcd", "");
+	ASSERT_STR_EQ("abcd", s);
+	free(s);
+	s = ft_strtrim("a", " ");
+	ASSERT_STR_EQ("a", s);
+	free(s);
+	s = ft_strtrim("   a   a   ", " ");
+	ASSERT_STR_EQ("a   a", s);
+	free(s);
+	s = ft_strtrim("   a   a   ", "a ");
+	ASSERT_STR_EQ("", s);
+	free(s);
+	PASS();
+}
+
 SUITE(part2)
 {
 	RUN_TEST(test_ft_substr);
 	RUN_TEST(test_ft_strjoin);
+	RUN_TEST(test_ft_strtrim);
 }
 
 GREATEST_MAIN_DEFS();
