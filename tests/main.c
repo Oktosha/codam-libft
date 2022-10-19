@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/19 14:44:36 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/19 15:06:09 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -473,6 +473,32 @@ TEST test_ft_itoa(void)
 	PASS();
 }
 
+char my_weird_f(unsigned int pos, char ch)
+{
+	return ch + pos;
+}
+
+char my_upper_f(unsigned int pos, char ch)
+{
+	(void)(pos);
+	return toupper(ch);
+}
+
+TEST test_ft_strmapi(void)
+{
+	char *s;
+	s = ft_strmapi("000", my_weird_f);
+	ASSERT_STR_EQ("012", s);
+	free(s);
+	s = ft_strmapi("aBc", my_upper_f);
+	ASSERT_STR_EQ("ABC", s);
+	free(s);
+	s = ft_strmapi("", my_weird_f);
+	ASSERT_STR_EQ("", s);
+	free(s);
+	PASS();
+}
+
 SUITE(part2)
 {
 	RUN_TEST(test_ft_substr);
@@ -480,6 +506,7 @@ SUITE(part2)
 	RUN_TEST(test_ft_strtrim);
 	RUN_TEST(test_ft_split);
 	RUN_TEST(test_ft_itoa);
+	RUN_TEST(test_ft_strmapi);
 }
 
 GREATEST_MAIN_DEFS();
