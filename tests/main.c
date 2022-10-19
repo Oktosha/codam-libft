@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/19 15:06:09 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/20 01:48:46 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -499,6 +499,20 @@ TEST test_ft_strmapi(void)
 	PASS();
 }
 
+void my_writing_upper(unsigned int pos, char *c)
+{
+	(void)(pos);
+	*c = toupper(*c);
+}
+
+TEST test_ft_striteri(void)
+{
+	char s[] = "abcd";
+	ft_striteri(s, my_writing_upper);
+	ASSERT_STR_EQ("ABCD", s);
+	PASS();
+}
+
 SUITE(part2)
 {
 	RUN_TEST(test_ft_substr);
@@ -507,6 +521,7 @@ SUITE(part2)
 	RUN_TEST(test_ft_split);
 	RUN_TEST(test_ft_itoa);
 	RUN_TEST(test_ft_strmapi);
+	RUN_TEST(test_ft_striteri);
 }
 
 GREATEST_MAIN_DEFS();
