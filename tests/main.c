@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/19 01:58:48 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/19 02:29:27 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -413,11 +413,38 @@ TEST test_ft_strtrim(void)
 	PASS();
 }
 
+TEST test_ft_split(void)
+{
+	char *s = "abcd";
+	char **ans = ft_split(s, ' ');
+	ASSERT_STR_EQ("abcd", ans[0]);
+	ASSERT_EQ(NULL, ans[1]);
+	free(ans[0]);
+	free(ans);
+
+	s = "";
+	ans = ft_split(s, ' ');
+	ASSERT_EQ(NULL, ans[0]);
+	free(ans);
+
+	s = "  ab cd   ";
+	ans = ft_split(s, ' ');
+	ASSERT_STR_EQ("ab", ans[0]);
+	ASSERT_STR_EQ("cd", ans[1]);
+	ASSERT_EQ(NULL, ans[2]);
+	free(ans[0]);
+	free(ans[1]);
+	free(ans);
+
+	PASS();
+}
+
 SUITE(part2)
 {
 	RUN_TEST(test_ft_substr);
 	RUN_TEST(test_ft_strjoin);
 	RUN_TEST(test_ft_strtrim);
+	RUN_TEST(test_ft_split);
 }
 
 GREATEST_MAIN_DEFS();
