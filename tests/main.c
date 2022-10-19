@@ -6,12 +6,13 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/19 02:29:27 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/19 14:44:36 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ctype.h>
 #include <libft.h>
+#include <limits.h>
 #include "greatest.h"
 
 TEST test_ft_isalpha(void)
@@ -439,12 +440,46 @@ TEST test_ft_split(void)
 	PASS();
 }
 
+TEST test_ft_itoa(void)
+{
+	char *s;
+	s = ft_itoa(42);
+	ASSERT_STR_EQ("42", s);
+	free(s);
+	s = ft_itoa(0);
+	ASSERT_STR_EQ("0", s);
+	free(s);
+	s = ft_itoa(1);
+	ASSERT_STR_EQ("1", s);
+	free(s);
+	s = ft_itoa(-1);
+	ASSERT_STR_EQ("-1", s);
+	free(s);
+	s = ft_itoa(-42);
+	ASSERT_STR_EQ("-42", s);
+	free(s);
+	s = ft_itoa(1000);
+	ASSERT_STR_EQ("1000", s);
+	free(s);
+	s = ft_itoa(-1000);
+	ASSERT_STR_EQ("-1000", s);
+	free(s);
+	s = ft_itoa(INT_MAX);
+	ASSERT_STR_EQ("2147483647", s);
+	free(s);
+	s = ft_itoa(INT_MIN);
+	ASSERT_STR_EQ("-2147483648", s);
+	free(s);
+	PASS();
+}
+
 SUITE(part2)
 {
 	RUN_TEST(test_ft_substr);
 	RUN_TEST(test_ft_strjoin);
 	RUN_TEST(test_ft_strtrim);
 	RUN_TEST(test_ft_split);
+	RUN_TEST(test_ft_itoa);
 }
 
 GREATEST_MAIN_DEFS();
