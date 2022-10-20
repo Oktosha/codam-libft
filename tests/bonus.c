@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 17:48:49 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/20 17:39:22 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/20 18:16:53 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,30 @@ TEST test_ft_lstlast(void)
 	PASS();
 }
 
+TEST test_ft_lstadd_back(void)
+{
+	char *s = "abc";
+	t_list *nodes[] = {ft_lstnew(s), ft_lstnew(s + 1), ft_lstnew(s + 2)};
+	t_list *p = NULL;
+	ft_lstadd_back(NULL, nodes[0]);
+	ft_lstadd_back(&p, nodes[0]);
+	ASSERT_EQ(p, nodes[0]);
+	ft_lstadd_back(&p, nodes[1]);
+	ASSERT_EQ(p->next, nodes[1]);
+	ft_lstadd_back(&p, nodes[2]);
+	ASSERT_EQ(p->next->next, nodes[2]);
+	for (int i = 0; i < 3; ++i)
+		free(nodes[i]);
+	PASS();
+}
+
 SUITE(bonus)
 {
 	RUN_TEST(test_ft_lstnew);
 	RUN_TEST(test_ft_lstadd_front);
 	RUN_TEST(test_ft_lstsize);
 	RUN_TEST(test_ft_lstlast);
+	RUN_TEST(test_ft_lstadd_back);
 }
 
 GREATEST_MAIN_DEFS();
