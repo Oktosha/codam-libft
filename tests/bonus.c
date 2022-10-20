@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 17:48:49 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/20 18:48:46 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/20 19:31:59 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,24 @@ TEST test_ft_lstclear(void)
 	PASS();
 }
 
+void changetoupper(void *p)
+{
+	char *pch = p;
+	*pch = toupper(*pch);
+}
+
+TEST test_ft_lstiter(void)
+{
+	char s[] = "abc";
+	t_list *nodes[] = {ft_lstnew(s), ft_lstnew(s + 1), ft_lstnew(s + 2)};
+	nodes[0]->next = nodes[1];
+	nodes[1]->next = nodes[2];
+	ft_lstiter(nodes[0], changetoupper);
+	ASSERT_STR_EQ("ABC", s);
+	ft_lstclear(nodes, nothingdel);
+	PASS();
+}
+
 SUITE(bonus)
 {
 	RUN_TEST(test_ft_lstnew);
@@ -131,6 +149,7 @@ SUITE(bonus)
 	RUN_TEST(test_ft_lstadd_back);
 	RUN_TEST(test_ft_lstdelone);
 	RUN_TEST(test_ft_lstclear);
+	RUN_TEST(test_ft_lstiter);
 }
 
 GREATEST_MAIN_DEFS();
