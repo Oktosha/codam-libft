@@ -1,3 +1,5 @@
+NAME = libft.a
+
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
@@ -20,9 +22,9 @@ BONUS_OBJS = ${BONUS_SRCS:.c=.o}
 
 .PHONY: all clean fclean re
 
-all: libft.a
+all: ${NAME}
 
-libft.a: ${OBJS}
+${NAME}: ${OBJS}
 	ar rc $@ $^
 
 bonus: ${OBJS} ${BONUS_OBJS}
