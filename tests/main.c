@@ -6,13 +6,14 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/20 01:48:46 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/20 13:52:35 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ctype.h>
 #include <libft.h>
 #include <limits.h>
+#include <stdio.h>
 #include "greatest.h"
 
 TEST test_ft_isalpha(void)
@@ -513,6 +514,19 @@ TEST test_ft_striteri(void)
 	PASS();
 }
 
+TEST test_ft_putchar_fd(void)
+{
+	FILE *file = tmpfile();
+	ft_putchar_fd('c', fileno(file));
+	ft_putchar_fd('d', fileno(file));
+	rewind(file);
+	ASSERT_EQ('c', fgetc(file));
+	ASSERT_EQ('d', fgetc(file));
+	ASSERT_EQ(EOF, fgetc(file));
+	fclose(file);
+	PASS();
+}
+
 SUITE(part2)
 {
 	RUN_TEST(test_ft_substr);
@@ -522,6 +536,7 @@ SUITE(part2)
 	RUN_TEST(test_ft_itoa);
 	RUN_TEST(test_ft_strmapi);
 	RUN_TEST(test_ft_striteri);
+	RUN_TEST(test_ft_putchar_fd);
 }
 
 GREATEST_MAIN_DEFS();
