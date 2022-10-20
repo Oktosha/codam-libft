@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 17:48:49 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/20 17:18:50 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/20 17:29:13 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,29 @@ TEST test_ft_lstadd_front(void)
 	PASS();
 }
 
+TEST test_ft_lstsize(void)
+{
+	ASSERT_EQ(0, ft_lstsize(NULL));
+	char ch = 'X';
+	t_list *node1 = ft_lstnew(&ch);
+	ASSERT_EQ(1, ft_lstsize(node1));
+	t_list *node2 = ft_lstnew(&ch);
+	node1->next = node2;
+	ASSERT_EQ(2, ft_lstsize(node1));
+	t_list *node3 = ft_lstnew(&ch);
+	node2->next = node3;
+	ASSERT_EQ(3, ft_lstsize(node1));
+	free(node1);
+	free(node2);
+	free(node3);
+	PASS();
+}
+
 SUITE(bonus)
 {
 	RUN_TEST(test_ft_lstnew);
 	RUN_TEST(test_ft_lstadd_front);
+	RUN_TEST(test_ft_lstsize);
 }
 
 GREATEST_MAIN_DEFS();
