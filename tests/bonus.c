@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 17:48:49 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/20 19:31:59 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/20 20:11:02 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,33 @@ TEST test_ft_lstiter(void)
 	PASS();
 }
 
+void *allocate_upper(void *p)
+{
+	char *ans = malloc(sizeof(char) * 1);
+	if (ans == NULL)
+	{
+		return (NULL);
+	}
+	*ans = toupper(*((char *)(p)));
+	return ans;
+}
+
+TEST test_ft_lstmap(void)
+{
+	char *s = "abc";
+	t_list *nodes[] = {ft_lstnew(s), ft_lstnew(s + 1), ft_lstnew(s + 2)};
+	nodes[0]->next = nodes[1];
+	nodes[1]->next = nodes[2];
+	t_list *lst = ft_lstmap(nodes[0], allocate_upper, strdel);
+	ASSERT_EQ(*((char *)(lst->content)), 'A');
+	ASSERT_EQ(*((char *)(lst->next->content)), 'B');
+	ASSERT_EQ(*((char *)(lst->next->next->content)), 'C');
+	ASSERT_EQ(lst->next->next->next, NULL);
+	ft_lstclear(&lst, strdel);
+	ft_lstclear(nodes, nothingdel);
+	PASS();
+}
+
 SUITE(bonus)
 {
 	RUN_TEST(test_ft_lstnew);
@@ -150,6 +177,7 @@ SUITE(bonus)
 	RUN_TEST(test_ft_lstdelone);
 	RUN_TEST(test_ft_lstclear);
 	RUN_TEST(test_ft_lstiter);
+	RUN_TEST(test_ft_lstmap);
 }
 
 GREATEST_MAIN_DEFS();
