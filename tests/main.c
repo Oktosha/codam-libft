@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/20 15:26:52 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/20 16:07:09 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -552,6 +552,46 @@ TEST test_ft_putendl_fd(void)
 	PASS();
 }
 
+static enum greatest_test_res test_one_ft_putnbr(int nbr)
+{
+	FILE *file = tmpfile();
+	ft_putnbr_fd(nbr, fileno(file));
+	rewind(file);
+	char s[100];
+	sprintf(s, "%d", nbr);
+	for (size_t i = 0; i < strlen(s); ++i)
+	{
+		ASSERT_EQ(s[i], fgetc(file));
+	}
+	ASSERT_EQ(EOF, fgetc(file));
+	fclose(file);
+	PASS();
+}
+
+TEST test_ft_putnbr_fd(void)
+{
+	CHECK_CALL(test_one_ft_putnbr(1));
+	CHECK_CALL(test_one_ft_putnbr(0));
+	CHECK_CALL(test_one_ft_putnbr(5));
+	CHECK_CALL(test_one_ft_putnbr(-1));
+	CHECK_CALL(test_one_ft_putnbr(-5));
+	CHECK_CALL(test_one_ft_putnbr(10));
+	CHECK_CALL(test_one_ft_putnbr(-10));
+	CHECK_CALL(test_one_ft_putnbr(-9));
+	CHECK_CALL(test_one_ft_putnbr(9));
+	CHECK_CALL(test_one_ft_putnbr(INT_MAX));
+	CHECK_CALL(test_one_ft_putnbr(INT_MIN));
+	CHECK_CALL(test_one_ft_putnbr(42));
+	CHECK_CALL(test_one_ft_putnbr(-42));
+	CHECK_CALL(test_one_ft_putnbr(10000));
+	CHECK_CALL(test_one_ft_putnbr(-10000));
+	CHECK_CALL(test_one_ft_putnbr(1283503));
+	CHECK_CALL(test_one_ft_putnbr(-1283503));
+	CHECK_CALL(test_one_ft_putnbr(-99));
+	CHECK_CALL(test_one_ft_putnbr(99));
+	PASS();
+}
+
 SUITE(part2)
 {
 	RUN_TEST(test_ft_substr);
@@ -564,6 +604,7 @@ SUITE(part2)
 	RUN_TEST(test_ft_putchar_fd);
 	RUN_TEST(test_ft_putstr_fd);
 	RUN_TEST(test_ft_putendl_fd);
+	RUN_TEST(test_ft_putnbr_fd);
 }
 
 GREATEST_MAIN_DEFS();
