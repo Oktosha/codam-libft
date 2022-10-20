@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/20 15:21:25 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/20 15:26:52 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -539,6 +539,19 @@ TEST test_ft_putstr_fd(void)
 	PASS();
 }
 
+TEST test_ft_putendl_fd(void)
+{
+	FILE *file = tmpfile();
+	ft_putendl_fd("cd", fileno(file));
+	rewind(file);
+	ASSERT_EQ('c', fgetc(file));
+	ASSERT_EQ('d', fgetc(file));
+	ASSERT_EQ('\n', fgetc(file));
+	ASSERT_EQ(EOF, fgetc(file));
+	fclose(file);
+	PASS();
+}
+
 SUITE(part2)
 {
 	RUN_TEST(test_ft_substr);
@@ -550,6 +563,7 @@ SUITE(part2)
 	RUN_TEST(test_ft_striteri);
 	RUN_TEST(test_ft_putchar_fd);
 	RUN_TEST(test_ft_putstr_fd);
+	RUN_TEST(test_ft_putendl_fd);
 }
 
 GREATEST_MAIN_DEFS();
