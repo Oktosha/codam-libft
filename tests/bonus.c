@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 17:48:49 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/20 18:16:53 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/20 18:36:02 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,20 @@ TEST test_ft_lstadd_back(void)
 	PASS();
 }
 
+void strdel(void *s)
+{
+	free(s);
+}
+
+TEST test_ft_lstdelone(void)
+{
+	char *s = "abc";
+	char *smem = strdup(s);
+	t_list *node = ft_lstnew(smem);
+	ft_lstdelone(node, strdel);
+	PASS();
+}
+
 SUITE(bonus)
 {
 	RUN_TEST(test_ft_lstnew);
@@ -99,6 +113,7 @@ SUITE(bonus)
 	RUN_TEST(test_ft_lstsize);
 	RUN_TEST(test_ft_lstlast);
 	RUN_TEST(test_ft_lstadd_back);
+	RUN_TEST(test_ft_lstdelone);
 }
 
 GREATEST_MAIN_DEFS();
@@ -107,5 +122,6 @@ int main(int argc, char **argv)
 {
     GREATEST_MAIN_BEGIN();
 	RUN_SUITE(bonus);
+	system("leaks test-bonus");
     GREATEST_MAIN_END();
 }

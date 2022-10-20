@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/20 16:07:09 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/20 18:32:21 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -614,5 +614,6 @@ int main(int argc, char **argv)
     GREATEST_MAIN_BEGIN();
 	RUN_SUITE(part1);
 	RUN_SUITE(part2);
+	system("leaks test-bonus");
     GREATEST_MAIN_END();
 }
