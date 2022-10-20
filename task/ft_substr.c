@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 01:02:23 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/19 01:23:01 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/20 22:36:59 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ans;
 
+	if (ft_strlen(s) <= start)
+	{
+		ans = malloc(sizeof(char) * 1);
+		if (ans == NULL)
+			return (NULL);
+		ans[0] = '\0';
+		return (ans);
+	}
 	len = ft_min(ft_strlen(s + start), len);
 	ans = malloc(sizeof(char) * (len + 1));
 	if (ans == NULL)
