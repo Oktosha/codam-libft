@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/20 19:35:22 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/20 20:11:52 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/21 21:18:08 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ static t_list	*ft_lstalloc(int len)
 	if (len <= 0)
 		return (NULL);
 	ans = ft_lstnew(NULL);
+	if (ans == NULL)
+		return (NULL);
 	prev = ans;
 	cur = NULL;
 	i = 0;
-	while (i < len - 1)
+	while (i++ < len - 1)
 	{
 		cur = ft_lstnew(NULL);
 		if (cur == NULL)
@@ -40,7 +42,6 @@ static t_list	*ft_lstalloc(int len)
 		}
 		prev->next = cur;
 		prev = cur;
-		++i;
 	}
 	return (ans);
 }
