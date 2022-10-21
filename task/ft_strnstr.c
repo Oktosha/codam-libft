@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/18 17:07:58 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/18 17:36:04 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/21 23:23:19 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	search_len;
 	size_t	pos;
 
+	if (len == 0)
+	{
+		if (ft_strlen(needle) == 0)
+			return ((char *)(haystack));
+		return (NULL);
+	}
 	needle_len = ft_strlen(needle);
 	haystack_len = ft_strlen(haystack);
 	search_len = ft_min(len, haystack_len);
