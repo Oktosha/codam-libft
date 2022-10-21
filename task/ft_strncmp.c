@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/15 20:46:09 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/15 21:08:54 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/21 15:01:05 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		return (0);
 	}
 	pos = 0;
-	while (pos < n - 1 && *(s1 + pos) == *(s2 + pos) && *s1 != '\0')
+	while (pos < n - 1 && *(s1 + pos) == *(s2 + pos) && *(s1 + pos) != '\0')
 	{
 		++pos;
 	}

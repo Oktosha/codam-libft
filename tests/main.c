@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 15:47:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/20 22:33:41 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/21 14:59:11 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,6 +243,7 @@ TEST test_ft_strncmp(void)
 	ASSERT_EQ(sign(ft_strncmp("\0a", "\0b", 3)), sign(strncmp("\0a", "\0b", 3)));
 	ASSERT_EQ(sign(ft_strncmp("abc", "def", 0)), sign(strncmp("abc", "def", 0)));
 	ASSERT_EQ(sign(ft_strncmp("abc", "a", 100)), sign(strncmp("abc", "a", 100)));
+	ASSERT_EQ(sign(strncmp("abc", "abc", 100)), sign(ft_strncmp("abc", "abc", 100)));
 	PASS();
 }
 
