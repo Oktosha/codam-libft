@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 19:26:28 by dkolodze      #+#    #+#                 */
-/*   Updated: 2022/10/13 20:09:22 by dkolodze      ########   odam.nl         */
+/*   Updated: 2022/10/21 20:29:00 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 			++pos;
 		}
 	}
-	else
+	else if (d > s)
 	{
 		pos = len;
 		while (pos-- > 0)

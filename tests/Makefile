@@ -1,5 +1,5 @@
 LIBFT_FOLDER = ../task
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 test: lib
 	$(CC) $(CFLAGS) main.c -I$(LIBFT_FOLDER) -L$(LIBFT_FOLDER) -lft -o test
